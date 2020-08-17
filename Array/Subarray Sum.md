@@ -28,7 +28,7 @@ class Solution:
         for pre in range(0,len(nums)-1):        #不能让sum=nums[pre], 然后post从pre+1开始循环,否则[1,0,1] fail
             sum = 0
             for post in range(pre, len(nums)):
-                sum += nums[post]
+                sum += nums[post]              # tricky part: 让post从pre处开始循环，相当于让sum一上来就 sum = nums[pre]
                 if sum == 0:
                     return [pre, post]
 
