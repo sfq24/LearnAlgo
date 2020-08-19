@@ -25,7 +25,6 @@ Example 2:
 
 
 ## 解
-思考的时候考虑有cycle，fast将要追到slow的情况。 fast会在 slowMove = false的情况下追到slow
 ```python
 """
 Definition of ListNode
