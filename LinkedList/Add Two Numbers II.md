@@ -14,7 +14,8 @@ Example:
 Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 8 -> 0 -> 7
 
-最粗暴是reverse，算完和，再reverse
+最粗暴是reverse，算完和，再reverse (解略）
+
 本质上可以考虑利用stack结构
 
 核心点在于：
@@ -22,7 +23,7 @@ Output: 7 -> 8 -> 0 -> 7
 2. corner case
 
 
-## 解
+## 解  Stack
 
 ```c#
 /**
