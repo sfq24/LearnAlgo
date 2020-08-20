@@ -12,7 +12,7 @@ public class LinkedList {
     public int val;
     public LinkedList next;
 
-    public LinkedList(int val, LinkedList next){
+    public LinkedList(int val, LinkedList next = null){
         this.val = val;
         this.next = next;
     }
