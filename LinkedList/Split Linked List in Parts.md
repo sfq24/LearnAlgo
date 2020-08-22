@@ -35,12 +35,8 @@ k will be an integer in the range [1, 50].
 
 正常解就行。 先得到长度，再算width，再一个一个创建子list
 
-核心点在于：
-1. c# Stack类型用法
-2. corner case
 
-
-## 解  Stack
+## 解 
 
 ```c#
 /**
