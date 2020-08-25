@@ -20,7 +20,7 @@ Output: [1,2,3]
 ## 解（循环）
 
 画图研究过程
-![anim] (https://github.com/MisterBooo/LeetCodeAnimation/blob/master/0144-Binary-Tree-Preorder-Traversal/Animation/Animation.gif)
+![anim](https://github.com/MisterBooo/LeetCodeAnimation/blob/master/0144-Binary-Tree-Preorder-Traversal/Animation/Animation.gif)
 
 ```c#
 /**
