@@ -41,6 +41,8 @@ grid[r][c] is 0 or 1
 BFS典型题，需要一步一步向后推。
 注意C# 语法，初始化array of arrays
 
+优化：考虑倒着往queue里放元素？
+
 ```c#
 public class Solution {
     public int ShortestPathBinaryMatrix(int[][] grid) {
