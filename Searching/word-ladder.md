@@ -29,6 +29,9 @@ return its length 5.
 ## 解
 BFS
 大test case超时。。。。
+优化：
+1. 考虑用set，O（1）； List ： O（n）
+2. 考虑每个单词的每个字母从a-z改变
 
 ```c#
 public class Solution {
