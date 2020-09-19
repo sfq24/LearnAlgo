@@ -34,7 +34,6 @@ public class Solution {
     public int NumIslands(char[][] grid) {
         if(grid == null || grid.Length == 0 || grid[0].Length == 0) return 0;
         
-        int[,] seen = new int[grid.Length, grid[0].Length];
         int islands = 0;
         for(int r = 0; r < grid.Length; r++){
             for(int c = 0; c < grid[0].Length; c++){
