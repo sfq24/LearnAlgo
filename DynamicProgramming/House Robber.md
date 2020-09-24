@@ -47,3 +47,30 @@ public class Solution {
 ```
 
 
+循环房： arranged in a circle
+其实仔细考虑，就是两种情况比较0---n-2打劫， 和1---n-1打劫。  （不循环是0---n-2）打劫。
+特殊情况是会有一种情况两头都没打劫，只打劫了（1---n-2），这时候另外一种情况肯定会cover住或头或尾的case
+
+
+```c#
+public class Solution {
+    public int Rob(int[] nums) {
+        if(nums == null || nums.Length == 0) return 0;
+        if(nums.Length < 2) return nums[0];
+        
+        return Math.Max(Helper(nums, 0, nums.Length-1), Helper(nums, 1, nums.Length));
+    }
+    
+    private int Helper(int[] nums, int start, int last){
+        int pre = 0, post = 0;
+        int curr = 0;
+        for(int i = start; i < last; i++){
+            curr = Math.Max(post, pre + nums[i]);
+            pre = post;
+            post = curr;
+        }
+        return curr;
+    }
+}
+
+```
