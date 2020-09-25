@@ -41,6 +41,34 @@ grid[r][c] is 0 or 1
 BFS典型题，需要一步一步向后推。
 注意C# 语法，初始化array of arrays
 
+
+# 解 动规
+
+```c#
+public class Solution {
+    public int NumSquares(int n) {
+        if(n == 0) return 0;
+        int[] dp = new int[n+1];
+        
+        dp[0] = 0;
+        for(int i  = 1; i <= n; i++){
+            dp[i] = int.MaxValue;
+            for(int j = 1; j <= n; j++){
+                if(j*j <= i){
+                    dp[i] = Math.Min(dp[i], 1 + dp[i - j*j]);
+                }
+            }
+        }
+        
+        return dp[n];
+    }
+}
+
+```
+
+
+
+# 解 BFS
 优化：考虑倒着往queue里放元素？
 
 ```c#
