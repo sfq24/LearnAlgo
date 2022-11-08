@@ -99,6 +99,31 @@ public class Solution {
 ```
 
 # 解
+
+## Java
+1. List的初始化和传导
+2. add，remove
+3. list.add(new ArrayList<>(tempList));
+
+```java
+public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> list = new ArrayList<>();
+    Arrays.sort(nums);
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
+}
+
+private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+    }
+}
+```
+
+
 注意C# 语法，初始化array of arrays
 
 ```c#
