@@ -24,7 +24,9 @@ Input:
 Output:
 [3, 4]
 
+## 其实是O（n）：
 直接2分法，最后前后找boundary，注意几个corner case： [], [1] 1
+
 
 ```python
 class Solution:
@@ -68,3 +70,60 @@ class Solution:
 ```
 
 
+## 真正O(logn):
+
+```java
+public int[] searchRange(int[] a, int target) {
+        // write your code here
+        if (a == null || a.length == 0) {
+            return new int[] {-1, -1};
+        }
+
+        int start = 0, end = a.length - 1;
+        int left = -1;
+
+        // find left boundary
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+
+            if (a[mid] >= target) {
+                end = mid;
+            } else {
+                start = mid;
+            }
+        }
+
+        if (a[start] == target) {
+            left = start;
+        } else if (a[end] == target) {
+            left = end;
+        } else {
+            return new int[] {-1, -1};
+        }
+
+        start = 0;
+        end = a.length - 1;
+        int right = -1;
+        // find right boundary
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+
+            if (a[mid] <= target) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+
+        if (a[end] == target) {
+            right = end;
+        } else if (a[start] == target) {
+            right = start;
+        } else {
+            return new int[] {-1, -1};
+        }
+
+        return new int[] {left, right};
+    }
+
+```
