@@ -28,26 +28,28 @@ The value of each element in nums will be in the range [-9999, 9999].
 
 背模板
 
-```c# 
-public class Solution {
-    public int Search(int[] nums, int target) {
-        if(nums == null || nums.Length == 0) return -1;
-        int start = 0, end = nums.Length -1;
-        int mid;
-        while(start + 1 < end){
-            mid = start + (end - start)/2;
-            if(nums[mid] < target){
-                start = mid;
-            }
-            else{
+```java
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int start = 0, end = nums.length;
+
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
                 end = mid;
+            } else {
+                start = mid + 1;
             }
         }
-        
-        if(nums[start] == target) return start;
-        if(nums[end] == target) return end;
-        
-        return -1;
+
+        return start;
     }
 }
 ```
