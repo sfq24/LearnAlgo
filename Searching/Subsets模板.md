@@ -65,7 +65,39 @@ public class Solution {
   
   ```
 
-**DFS 模板**      针对有重复元素的subsets
+
+# 回溯法 解
+
+## Java
+1. List的初始化和传导
+2. add，remove
+3. list.add(new ArrayList<>(tempList));
+
+```java
+public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> list = new ArrayList<>();
+    Arrays.sort(nums);
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
+}
+
+private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+    }
+}
+```
+
+
+# 回溯法和DFS的区别在于，回溯的驱动是for循环，保证遍历；DFS的驱动力是递归，每个情况自调用进行驱动
+
+
+**DFS 模板**     ## C#
+
+针对有重复元素的subsets
 
 ```c#
  class Solution {
@@ -95,31 +127,6 @@ public class Solution {
             temp.RemoveAt(temp.size() - 1);           //用RemoveAt准确删除最后一个元素
         }
     } 
-}
-```
-
-# 解
-
-## Java
-1. List的初始化和传导
-2. add，remove
-3. list.add(new ArrayList<>(tempList));
-
-```java
-public List<List<Integer>> subsets(int[] nums) {
-    List<List<Integer>> list = new ArrayList<>();
-    Arrays.sort(nums);
-    backtrack(list, new ArrayList<>(), nums, 0);
-    return list;
-}
-
-private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
-    list.add(new ArrayList<>(tempList));
-    for(int i = start; i < nums.length; i++){
-        tempList.add(nums[i]);
-        backtrack(list, tempList, nums, i + 1);
-        tempList.remove(tempList.size() - 1);
-    }
 }
 ```
 
