@@ -37,6 +37,57 @@ Note:
 grid[r][c] is 0 or 1
 
 
+BFS模版：
+```java
+class Solution {
+
+    private static int[][] directions = {{0,1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
+    public int shortestPathBinaryMatrix(int[][] grid) {
+        if (grid[0][0] == 1) return -1;
+
+        Queue<int[]> queue = new LinkedList<>();
+
+        int distance = 0;
+
+        queue.add(new int[]{0,0});
+
+        while (!queue.isEmpty()){ // 求最短路径 使用BFS
+            int size = queue.size();
+
+            distance++;
+
+            while (size-- > 0) {
+                int[] pos = queue.remove();
+
+                int row = pos[0], col = pos[1];
+
+                if (grid[row][col] == 1 || grid[row][col] == 2) {
+                    continue;
+                }
+
+                grid[row][col] = 2;         //标记走过
+
+                if (row == grid.length - 1 && col == grid[0].length - 1) {
+                    return distance;
+                }
+
+                for (int i = 0; i < 8; i++){
+                    int newX = pos[0] + directions[i][0];
+                    int newY = pos[1] + directions[i][1];
+                    if (0 <= newX && newX < grid.length && 0 <= newY && newY < grid[0].length && grid[newX][newY] == 0){
+                        queue.add(new int[]{newX, newY});
+                    }
+                }
+            }
+            
+        }
+        return -1; // 如果最后终点的值还是0，说明没有到达
+    }
+}
+```
+
+
+
 
 BFS典型题，需要一步一步向后推。
 注意C# 语法，初始化array of arrays
@@ -70,6 +121,8 @@ public class Solution {
 
 # 解 BFS
 优化：考虑倒着往queue里放元素？
+
+
 
 ```c#
 public class Solution {
