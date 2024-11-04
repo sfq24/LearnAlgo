@@ -20,6 +20,38 @@ backtracing典型题
 
 # 解 回溯
 
+```java
+class Solution {
+    static final String[] KEY_MAP = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    public List<String> letterCombinations(String digits) {
+        List<String> results = new ArrayList<>();
+
+        if (digits == null || digits.length() == 0) {
+            return results; 
+        }
+        
+        helper(digits, results, "", 0);
+
+        return results;
+    }
+
+    private void helper(String digits, List<String> results, String comb, int index) {
+        if (comb.length() == digits.length()) {
+            results.add(new String(comb));
+            return;
+        }
+
+        String str = KEY_MAP[digits.charAt(index) - '0'];
+
+        for (int j = 0; j < str.length(); j++) {
+            helper(digits, results, comb + str.charAt(j), index + 1);
+        }
+    }
+}
+```
+
+
+## C#
 ```c#
 public class Solution {
     public IList<string> LetterCombinations(string digits) {
