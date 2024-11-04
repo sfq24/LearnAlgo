@@ -41,10 +41,10 @@ class Solution {
             return;
         }
 
-        String str = KEY_MAP[digits.charAt(index) - '0'];
+        String str = KEY_MAP[digits.charAt(index) - '0'];     // 注意这个位置
 
         for (int j = 0; j < str.length(); j++) {
-            helper(digits, results, comb + str.charAt(j), index + 1);
+            helper(digits, results, comb + str.charAt(j), index + 1);      // 取巧了，正常要remove需要用StringBuilder的removeCharAt（）
         }
     }
 }
