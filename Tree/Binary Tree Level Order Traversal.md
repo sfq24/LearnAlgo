@@ -24,6 +24,58 @@ Challenge
 Using only 1 queue to implement it.
 
 
+## Java
+
+```java
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+
+        if (root == null) {
+            return res;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+
+        TreeNode curr = root;
+
+        while (!stack.isEmpty() || curr != null) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+
+            curr = stack.pop();
+            res.add(curr.val);
+            curr = curr.right;
+        }
+
+
+        return res;
+    }
+
+
+    // public List<Integer> inorderTraversal(TreeNode root) {
+    //     List<Integer> res = new ArrayList<>();
+
+    //     dfs(root, res);
+
+    //     return res;
+    // }
+
+    // private void dfs(TreeNode node, List<Integer> res) {
+    //     if (node == null) {
+    //         return;
+    //     }
+
+    //     dfs(node.left, res);
+    //     res.add(node.val);
+    //     dfs(node.right, res);
+    // }
+}
+```
+
 **注意python中强行用arrary代表queue**
 
 ```python
