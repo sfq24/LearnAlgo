@@ -15,3 +15,36 @@ def maxWealth(self, accounts: List[List[int]]) -> int:
     return max(map(sum, accounts))
 # map，第一个是用的函数，第二个是可迭代的对象
 ~~~
+
+
+## Dictionary操作
+~~~python3
+def is_anagram(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+
+    count = {}
+    for ch in s:
+        count[ch] = count.get(ch, 0) + 1
+    for ch in t:
+        count[ch] = count.get(ch, 0) - 1
+
+    return all(v == 0 for v in count.values())
+~~~
+
+
+## 字符转数字
+~~~python3
+def is_anagram(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+
+    count = [0] * 26
+    for ch in s:
+        count[ord(ch) - ord('a')] += 1
+    for ch in t:
+        count[ord(ch) - ord('a')] -= 1
+
+    return all(c == 0 for c in count)
+~~~
+
