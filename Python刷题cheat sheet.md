@@ -30,6 +30,26 @@ def is_anagram(s: str, t: str) -> bool:
         count[ch] = count.get(ch, 0) - 1
 
     return all(v == 0 for v in count.values())
+
+
+for k in d:               # 遍历 key
+for k in d.keys():        # 同上，显式写法
+for v in d.values():      # 遍历 value
+for k, v in d.items():    # 遍历键值对 ← 最常用
+
+# 带 index
+for i, (k, v) in enumerate(d.items()):
+
+
+# 按 key 排序
+sorted(d.items())                        # [(k,v), ...] key 升序
+sorted(d.items(), reverse=True)          # key 降序
+
+# 按 value 排序 ← 高频考点
+sorted(d.items(), key=lambda x: x[1])          # value 升序
+sorted(d.items(), key=lambda x: -x[1])         # value 降序
+sorted(d.items(), key=lambda x: x[1], reverse=True)
+
 ~~~
 
 
